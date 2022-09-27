@@ -24,7 +24,7 @@ func _ready():
 		$ColorRect.color = Color8(134,142,150)
 
 func _physics_process(_delta):
-	if dying:
+	if dying and not $Confetti.emitting:
 		queue_free()
 
 func hit():
@@ -36,3 +36,4 @@ func die():
 	$ColorRect.hide()
 	Global.update_score(score)
 	get_parent().check_level()
+	$Confetti.emitting = true
